@@ -3,165 +3,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BigMotionUniverse — Amazon Finds</title>
+<title>BigMotionUniverse &#x1F525; Amazon Deals</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: #0a0a0a;
     color: #fff;
     min-height: 100vh;
   }
+
   header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    border-bottom: 2px solid #FF6B00;
+    padding: 16px 20px;
     text-align: center;
-    border-bottom: 2px solid #e94560;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
   header h1 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
   }
-  header h1 span { color: #e94560; }
-  header p {
-    margin-top: 8px;
-    color: #aaa;
-    font-size: 0.95rem;
-  }
-  .ig-link {
-    display: inline-block;
-    margin-top: 12px;
-    color: #e94560;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  .ig-link:hover { text-decoration: underline; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 24px 16px;
-    max-width: 900px;
+  header h1 span { color: #FF6B00; }
+
+  .container {
+    max-width: 480px;
     margin: 0 auto;
+    padding: 16px 12px 40px;
   }
-  .card {
-    background: #1a1a1a;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #222;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: #e94560;
-  }
-  .card img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: contain;
-    background: #fff;
-    padding: 10px;
-  }
-  .card-body { padding: 12px; }
-  .card-title {
-    font-size: 0.82rem;
-    font-weight: 600;
-    line-height: 1.3;
-    height: 2.6em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    color: #eee;
-  }
-  .card-price {
-    font-size: 1rem;
+
+  /* Hero card */
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FF6B00;
+    color: #fff;
+    font-size: 0.7rem;
     font-weight: 800;
-    color: #e94560;
-    margin: 6px 0;
-  }
-  .card-rating {
-    font-size: 0.75rem;
-    color: #f5a623;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
     margin-bottom: 10px;
   }
-  .btn {
+
+  .hero-card {
+    background: linear-gradient(145deg, #1a1a1a, #141414);
+    border: 1px solid #FF6B00;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 0 30px rgba(255, 107, 0, 0.15);
+  }
+
+  .hero-card .product-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-card .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+  }
+
+  .hero-card .card-body {
+    padding: 16px;
+  }
+
+  .hero-card .product-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .hero-card .product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .hero-card .product-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #FF6B00;
+  }
+
+  .hero-card .time-ago {
+    font-size: 0.72rem;
+    color: #888;
+  }
+
+  .hero-card .btn-shop {
     display: block;
     width: 100%;
-    padding: 9px;
-    background: #e94560;
+    background: #FF6B00;
     color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
     text-align: center;
-    border-radius: 8px;
     text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    transition: background 0.2s;
+    padding: 14px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    transition: background 0.15s;
   }
-  .btn:hover { background: #c73652; }
-  .empty {
+  .hero-card .btn-shop:hover { background: #e05e00; }
+
+  /* Grid */
+  .section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 12px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .grid-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s;
+  }
+  .grid-card:hover { border-color: #FF6B00; }
+
+  .grid-card .product-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .grid-card .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+
+  .grid-card .card-body {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-card .product-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #ddd;
+    flex: 1;
+    margin-bottom: 8px;
+    /* Clamp to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .grid-card .product-price {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #FF6B00;
+    margin-bottom: 8px;
+  }
+
+  .grid-card .btn-shop {
+    display: block;
+    background: #FF6B00;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 7px;
+    transition: background 0.15s;
+  }
+  .grid-card .btn-shop:hover { background: #e05e00; }
+
+  /* Loading / empty */
+  .loading {
     text-align: center;
     padding: 60px 20px;
     color: #555;
-    grid-column: 1/-1;
+    font-size: 0.9rem;
   }
+  .loading .spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #222;
+    border-top-color: #FF6B00;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   footer {
     text-align: center;
-    padding: 30px 20px;
+    padding: 24px 20px;
     color: #444;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     border-top: 1px solid #1a1a1a;
   }
-  footer a { color: #e94560; text-decoration: none; }
+
+  /* Img fallback */
+  .img-fallback {
+    width: 60%;
+    opacity: 0.15;
+  }
+
+  .no-img-icon {
+    font-size: 2rem;
+    opacity: 0.2;
+  }
 </style>
 </head>
 <body>
+
 <header>
-  <h1>Big<span>Motion</span>Universe</h1>
-  <p>Amazon finds that actually work. Updated daily. 🛒</p>
-  <a class="ig-link" href="https://instagram.com/bigmotionuniverse" target="_blank">
-    📱 @bigmotionuniverse on Instagram
-  </a>
+  <h1>&#x1F525; BigMotionUniverse | <span>Amazon Deals</span></h1>
 </header>
 
-<div class="grid" id="grid">
-  <div class="empty">Loading products...</div>
+<div class="container" id="app">
+  <div class="loading">
+    <div class="spinner"></div>
+    Loading latest deals...
+  </div>
 </div>
 
-<footer>
-  As an Amazon Associate I earn from qualifying purchases.<br>
-  <a href="https://instagram.com/bigmotionuniverse">@bigmotionuniverse</a>
-</footer>
+<footer>Updated automatically &bull; Affiliate links earn commission</footer>
 
 <script>
-const CACHE_BUST = Date.now();
-fetch(`products.json?v=${CACHE_BUST}`)
-  .then(r => r.json())
-  .then(products => {
-    const grid = document.getElementById("grid");
-    if (!products.length) {
-      grid.innerHTML = "<div class=\"empty\">New products coming soon! Follow us on Instagram 📱</div>";
+const PRODUCTS_URL = 'products.json?t=' + Date.now();
+
+function extractAsin(url) {
+  if (!url) return '';
+  const m = url.match(/\/dp\/([A-Z0-9]{10})/);
+  return m ? m[1] : '';
+}
+
+function getImageUrl(product) {
+  if (product.image && product.image.startsWith('http')) return product.image;
+  const asin = extractAsin(product.url);
+  if (asin) return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.MZZZZZZZ.jpg`;
+  return '';
+}
+
+function formatTime(isoStr) {
+  if (!isoStr) return '';
+  try {
+    const diff = Math.floor((Date.now() - new Date(isoStr).getTime()) / 60000);
+    if (diff < 1)  return 'Just now';
+    if (diff < 60) return `${diff} min ago`;
+    const h = Math.floor(diff / 60);
+    if (h < 24)    return `${h}h ago`;
+    return `${Math.floor(h / 24)}d ago`;
+  } catch(e) { return ''; }
+}
+
+function formatPrice(p) {
+  if (!p) return '';
+  const n = parseFloat(p);
+  return isNaN(n) ? '' : '$' + n.toFixed(2);
+}
+
+function imgEl(src, alt) {
+  if (!src) return `<div class="no-img-icon">&#x1F6CD;</div>`;
+  return `<img src="${src}" alt="${alt}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div class="no-img-icon" style="display:none">&#x1F6CD;</div>`;
+}
+
+function renderHero(p) {
+  const img    = getImageUrl(p);
+  const price  = formatPrice(p.price);
+  const time   = formatTime(p.posted_at);
+
+  return `
+    <div class="hero-label">&#x1F525; Latest Drop</div>
+    <div class="hero-card">
+      <div class="product-img-wrap">${imgEl(img, p.title)}</div>
+      <div class="card-body">
+        <div class="product-title">${escHtml(p.title)}</div>
+        <div class="product-meta">
+          ${price ? `<div class="product-price">${escHtml(price)}</div>` : '<div></div>'}
+          ${time  ? `<div class="time-ago">Updated ${escHtml(time)}</div>` : ''}
+        </div>
+        <a class="btn-shop" href="${escHtml(p.url)}" target="_blank" rel="noopener">SHOP NOW &rarr;</a>
+      </div>
+    </div>
+  `;
+}
+
+function renderGridCard(p) {
+  const img   = getImageUrl(p);
+  const price = formatPrice(p.price);
+  return `
+    <div class="grid-card">
+      <div class="product-img-wrap">${imgEl(img, p.title)}</div>
+      <div class="card-body">
+        <div class="product-title">${escHtml(p.title)}</div>
+        ${price ? `<div class="product-price">${escHtml(price)}</div>` : ''}
+        <a class="btn-shop" href="${escHtml(p.url)}" target="_blank" rel="noopener">SHOP NOW &rarr;</a>
+      </div>
+    </div>
+  `;
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadProducts() {
+  const app = document.getElementById('app');
+  try {
+    const resp = await fetch(PRODUCTS_URL);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    let products = await resp.json();
+
+    if (!Array.isArray(products) || products.length === 0) {
+      app.innerHTML = '<div class="loading">No products yet. Check back soon!</div>';
       return;
     }
-    grid.innerHTML = products.slice().reverse().map(p => `
-      <div class="card">
-        <img src="${p.image || ''}" alt="${p.title || 'Product'}" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/555?text=Amazon+Find'">
-        <div class="card-body">
-          <div class="card-title">${p.title || 'Amazon Find'}</div>
-          ${p.price ? `<div class="card-price">$${p.price}</div>` : ''}
-          ${p.rating ? `<div class="card-rating">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))} ${p.rating}</div>` : ''}
-          <a class="btn" href="${p.url}" target="_blank" rel="noopener">Shop on Amazon →</a>
-        </div>
-      </div>
-    `).join('');
-  })
-  .catch(() => {
-    document.getElementById("grid").innerHTML =
-      "<div class=\"empty\">Check back soon for our latest Amazon finds! 🛒</div>";
-  });
+
+    // Reverse so newest is last item (most recently appended) = first shown
+    products = [...products].reverse();
+
+    const hero = products[0];
+    const rest  = products.slice(1);
+
+    let html = renderHero(hero);
+
+    if (rest.length > 0) {
+      html += `<div class="section-title">More Amazon Finds</div>`;
+      html += `<div class="grid">`;
+      rest.forEach(p => { html += renderGridCard(p); });
+      html += `</div>`;
+    }
+
+    app.innerHTML = html;
+  } catch(e) {
+    app.innerHTML = `<div class="loading">Could not load products.<br><small style="color:#555">${e.message}</small></div>`;
+  }
+}
+
+loadProducts();
 </script>
 </body>
 </html>
