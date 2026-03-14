@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BigMotionUniverse — Amazon Finds</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid #e94560;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  header h1 span { color: #e94560; }
+  header p {
+    margin-top: 8px;
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+  .ig-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #e94560;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .ig-link:hover { text-decoration: underline; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 24px 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #222;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #e94560;
+  }
+  .card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #fff;
+    padding: 10px;
+  }
+  .card-body { padding: 12px; }
+  .card-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+    height: 2.6em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #eee;
+  }
+  .card-price {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #e94560;
+    margin: 6px 0;
+  }
+  .card-rating {
+    font-size: 0.75rem;
+    color: #f5a623;
+    margin-bottom: 10px;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 9px;
+    background: #e94560;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #c73652; }
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+    grid-column: 1/-1;
+  }
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #444;
+    font-size: 0.8rem;
+    border-top: 1px solid #1a1a1a;
+  }
+  footer a { color: #e94560; text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Big<span>Motion</span>Universe</h1>
+  <p>Amazon finds that actually work. Updated daily. 🛒</p>
+  <a class="ig-link" href="https://instagram.com/bigmotionuniverse" target="_blank">
+    📱 @bigmotionuniverse on Instagram
+  </a>
+</header>
+
+<div class="grid" id="grid">
+  <div class="empty">Loading products...</div>
+</div>
+
+<footer>
+  As an Amazon Associate I earn from qualifying purchases.<br>
+  <a href="https://instagram.com/bigmotionuniverse">@bigmotionuniverse</a>
+</footer>
+
+<script>
+const CACHE_BUST = Date.now();
+fetch(`products.json?v=${CACHE_BUST}`)
+  .then(r => r.json())
+  .then(products => {
+    const grid = document.getElementById("grid");
+    if (!products.length) {
+      grid.innerHTML = "<div class=\"empty\">New products coming soon! Follow us on Instagram 📱</div>";
+      return;
+    }
+    grid.innerHTML = products.slice().reverse().map(p => `
+      <div class="card">
+        <img src="${p.image || ''}" alt="${p.title || 'Product'}" onerror="this.src='https://via.placeholder.com/200x200/1a1a1a/555?text=Amazon+Find'">
+        <div class="card-body">
+          <div class="card-title">${p.title || 'Amazon Find'}</div>
+          ${p.price ? `<div class="card-price">$${p.price}</div>` : ''}
+          ${p.rating ? `<div class="card-rating">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))} ${p.rating}</div>` : ''}
+          <a class="btn" href="${p.url}" target="_blank" rel="noopener">Shop on Amazon →</a>
+        </div>
+      </div>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById("grid").innerHTML =
+      "<div class=\"empty\">Check back soon for our latest Amazon finds! 🛒</div>";
+  });
+</script>
+</body>
+</html>
