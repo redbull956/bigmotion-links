@@ -1,8 +1,32 @@
 [
   {
-    "title": "Test Product Air Fryer Digital",
-    "price": "49.99",
+    "title": "Modern Metal Plant Stands",
+    "price": "36.97",
     "url": "https://www.amazon.com/dp/B0C6JPCHG2?tag=bigmotionuniv-20",
+    "image": ""
+  },
+  {
+    "title": "Cast Iron Dutch Oven Stove Top",
+    "price": "42.99",
+    "url": "https://www.amazon.com/dp/B0BXRYXYS7?tag=bigmotionuniv-20",
+    "image": ""
+  },
+  {
+    "title": "Compact Travel Stroller",
+    "price": "109.99",
+    "url": "https://www.amazon.com/dp/B0CP6G2HKJ?tag=bigmotionuniv-20",
+    "image": ""
+  },
+  {
+    "title": "Modern Abstract Wall Art",
+    "price": "94.99",
+    "url": "https://www.amazon.com/dp/B0CJN988J1?tag=bigmotionuniv-20",
+    "image": ""
+  },
+  {
+    "title": "Portable Home Gym Equipment",
+    "price": "69.96",
+    "url": "https://www.amazon.com/dp/B0DSFQ19B2?tag=bigmotionuniv-20",
     "image": ""
   }
 ]
