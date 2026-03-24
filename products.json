@@ -111,5 +111,11 @@
     "price": "29.99",
     "url": "https://www.amazon.com/dp/B0DRD6J18C?tag=bigmotionuniv-20",
     "image": "https://m.media-amazon.com/images/I/61+Vu7ymi2L._AC_SL1500_.jpg"
+  },
+  {
+    "title": "Test Product",
+    "price": "29.99",
+    "image": "",
+    "url": "https://www.amazon.com/dp/B0TEST?tag=bigmotionuniv-20"
   }
 ]
